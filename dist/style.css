@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Courier New", Courier, monospace;
+}
+
+body {
+  background-color: #444654;
+}
+
+ul {
+  background-color: #343541;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  gap: 8vh;
+  padding: 10px 0px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: white;
+}
