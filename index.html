@@ -5,11 +5,132 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script type="module" src="./main.js"></script>
+    <script src="main.js"></script>
+    <script type="module" src="../src/buttonFunctions.js"></script>
     <script type="module" src="../src/index.js"></script>
     <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div id="content"></div>
+    <div id="mainScreen">
+      <nav>
+        <ul id="navBar">
+          <li id="logo">2do.List</li>
+          <li class="navButtons"><a href="">Home</a></li>
+          <li class="navButtons"><a href="">About</a></li>
+          <li class="navButtons"><a href="">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="welcomeContainer">
+        <div>
+          <h1>Welcome</h1>
+        </div>
+        <div>
+          <input
+            id="usernameInput"
+            name="usernameInput"
+            type="text"
+            placeholder="Username..."
+          />
+        </div>
+        <div>
+          <button type="submit" id="getStartedButton">Get Started</button>
+        </div>
+      </div>
+
+      <div class="aboutContainer">
+        <div class="aboutMessage">
+          <h1>About</h1>
+          <h3>2do.List is Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem IpsumLorem
+            IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem IpsumLorem
+            IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum</h3>
+        </div>
+
+        <div class="featuresMessage">
+          <h1>Features</h1>
+          <div class="featuresList">
+            <div>
+              <h2>Add/Edit Easily</h2>
+              <p>
+                Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem IpsumLorem
+                IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+              </p>
+            </div>
+            <div>
+              <h2>Organize Projects</h2>
+              <p>
+                Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem IpsumLorem
+                IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+              </p>
+            </div>
+            <div>
+              <h2>Clean UI</h2>
+              <p>
+                Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem IpsumLorem
+                IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+              </p>
+            </div>
+            <div>
+              <h2>To-Do List</h2>
+              <p>
+                Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem IpsumLorem
+                IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+              </p>
+            </div>
+            <div>
+              <h2>Add/Edit Easily</h2>
+              <p>
+                Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem IpsumLorem
+                IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+              </p>
+            </div>
+            <div>
+              <h2>Organize Projects</h2>
+              <p>
+                Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem IpsumLorem
+                IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+              </p>
+            </div>
+            <div>
+              <h2>Clean UI</h2>
+              <p>
+                Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem IpsumLorem
+                IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+              </p>
+            </div>
+            <div>              
+              <h2>Clean UI</h2>
+              <p>
+                Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem IpsumLorem
+                IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum
+              </p>
+            </div>
+        </div>
+      </div>
+
+    </div>
   </body>
+
+  <!--
+    <Instructions>
+    -ToDo Items will have title, description, due date, priority, notes, checklist.
+    -Different lists of ToDo and let user decide where to put them
+    -Separate function logics
+    -Site should allow user to view all projects, view todos in each project, expand a todo to see
+    /edit details, add/delete todo.
+    -Use date-fns github, and localStorage at the end.
+
+    <Pseudocode>
+      UI will look like https://prnt.sc/cead6fOsLN4Y
+      1. We will make a main screen for a username, and a welcome msg with get started button. Transition
+      2. We will use the input from main screen to welcome user. and put today's Date
+      3. Projects Tab with an add button. We will just add new divs each time it's clicked, and ask for a title
+      4.
+  -->
 </html>
