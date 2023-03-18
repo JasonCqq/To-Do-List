@@ -1,22 +1,123 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Courier New", Courier, monospace;
-}
-
-body {
-  background-color: #444654;
-}
-
-ul {
-  background-color: #343541;
-  display: flex;
   list-style: none;
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+}
+
+#mainScreen {
+  height: 100%;
+  display: block;
+}
+
+#navBar {
+  display: flex;
+  position: sticky;
+  width: 100%;
+  height: 6vh;
+  align-items: center;
+  gap: 1vh;
+  border-radius: 3px;
+  box-shadow: 1px 1px 7px #000022;
+  color: #3399ff;
+}
+#navBar a {
+  color: #3399ff;
+  font-weight: 700;
+}
+#navBar > li:hover {
+  text-decoration: underline;
+}
+#navBar .navButtons {
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+  margin-right: 5vh;
+}
+
+#logo {
+  font-size: 2.25rem;
+  margin-right: auto;
+  margin-left: 5vh;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.welcomeContainer {
+  height: 30vh;
+  background-color: #3399ff;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.7fr 0.3fr 0.5fr;
   justify-content: center;
   align-items: center;
-  gap: 8vh;
-  padding: 10px 0px;
-  font-weight: bold;
-  font-size: 1.1rem;
+  text-align: center;
+}
+
+#getStartedButton:hover {
+  cursor: pointer;
+}
+
+.welcomeContainer h1 {
+  font-size: 5rem;
+  letter-spacing: 15px;
   color: white;
+}
+
+#usernameInput {
+  border-style: none;
+  border: 2px solid #333399;
+  color: #3399ff;
+  border-radius: 25px;
+  width: 40vh;
+  height: 5vh;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+#getStartedButton {
+  border-style: none;
+  background-color: #333399;
+  color: white;
+  padding: 10px;
+  font-weight: 900;
+  border-radius: 25px;
+}
+
+.aboutContainer {
+  background-color: #3366cc;
+  color: white;
+  height: 64vh;
+  display: grid;
+  grid-template-columns: 0.3fr 0.7fr;
+  text-align: center;
+}
+
+.aboutMessage {
+  margin-top: 1vh;
+  letter-spacing: 5px;
+}
+.aboutMessage h1 {
+  padding-bottom: 10px;
+}
+
+.featuresMessage {
+  background-color: #333399;
+}
+.featuresMessage h1 {
+  letter-spacing: 5px;
+  margin-top: 1vh;
+}
+
+.featuresList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 55px;
+  width: 90%;
+  margin-left: 5vh;
+  margin-top: 5vh;
+}
+
+* {
 }
