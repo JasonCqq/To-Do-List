@@ -79,6 +79,10 @@ export function createToDoForm() {
       <label for="notesInput">Extra Notes</label> <br>
       <textarea  id="notesInput" name="notesInput" type="text"></textarea>
     </div>
+
+    <div id="submitForm-grid">
+      <button id="submitForm">CREATE</button>
+    </div>
   </form>
   `);
   details.appendChild(form);
