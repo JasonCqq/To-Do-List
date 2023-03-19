@@ -202,13 +202,15 @@
 
 #todos {
   grid-area: t;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: flex-start;
 }
 #todos h1 {
+  text-decoration: underline;
+  padding-top: 5px;
   margin-left: auto;
+}
+.todosTitle {
+  display: flex;
+  justify-content: center;
 }
 
 #details {
@@ -299,6 +301,7 @@ textarea {
 #createNewTask {
   background-color: blue;
   padding: 10px;
+  height: 5vh;
   color: white;
   font-weight: bold;
   font-size: 1rem;
@@ -308,4 +311,19 @@ textarea {
 }
 #createNewTask:hover {
   cursor: pointer;
+}
+
+#tasks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 90%;
+  height: 100%;
+  gap: 25px;
+  margin: auto;
+}
+
+#tasks div {
+  border: 1px solid black;
+  text-align: center;
 }
