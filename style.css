@@ -3,7 +3,9 @@
   padding: 0;
   list-style: none;
   text-decoration: none;
+  box-sizing: border-box;
   font-family: "Inter", sans-serif;
+  color: black;
 }
 
 #mainScreen {
@@ -19,11 +21,10 @@
   align-items: center;
   gap: 1vh;
   border-radius: 3px;
-  box-shadow: 1px 1px 7px #000022;
-  color: #3399ff;
+  color: blue;
 }
 #navBar a {
-  color: #3399ff;
+  color: black;
   font-weight: 700;
 }
 #navBar > li:hover {
@@ -34,7 +35,6 @@
   letter-spacing: 1px;
   margin-right: 5vh;
 }
-
 #logo {
   font-size: 2.25rem;
   margin-right: auto;
@@ -42,79 +42,153 @@
   font-weight: bold;
   letter-spacing: 3px;
 }
-
 .welcomeContainer {
-  height: 30vh;
-  background-color: #3399ff;
+  height: 40vh;
+  width: 80%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 0.7fr 0.3fr 0.5fr;
   justify-content: center;
   align-items: center;
+  margin: auto;
   text-align: center;
 }
-
 #getStartedButton:hover {
   cursor: pointer;
 }
-
 .welcomeContainer h1 {
   font-size: 5rem;
   letter-spacing: 15px;
-  color: white;
+  color: black;
+  animation: breathe 3500ms infinite forwards;
+  overflow: hidden;
 }
-
+@keyframes breathe {
+  50% {
+    transform: scaleX(1.075) scaleY(1.05);
+  }
+  100% {
+    transform: scaleX(1) scaleY(1);
+  }
+}
 #usernameInput {
   border-style: none;
-  border: 2px solid #333399;
-  color: #3399ff;
+  color: black;
   border-radius: 25px;
   width: 40vh;
   height: 5vh;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-weight: bold;
   text-align: center;
 }
-
+#usernameInput:focus {
+  outline: none;
+}
 #getStartedButton {
   border-style: none;
-  background-color: #333399;
+  background-color: blue;
   color: white;
-  padding: 10px;
+  padding: 10px 25px;
   font-weight: 900;
-  border-radius: 25px;
+  font-size: 1.5rem;
+  border-radius: 15px;
 }
-
-.aboutContainer {
-  background-color: #3366cc;
-  color: white;
-  height: 64vh;
-  display: grid;
-  grid-template-columns: 0.3fr 0.7fr;
-  text-align: center;
-}
-
-.aboutMessage {
-  margin-top: 1vh;
-  letter-spacing: 5px;
-}
-.aboutMessage h1 {
-  padding-bottom: 10px;
-}
-
 .featuresMessage {
-  background-color: #333399;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .featuresMessage h1 {
   letter-spacing: 5px;
   margin-top: 1vh;
+  text-align: center;
 }
-
 .featuresList {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 55px;
   width: 90%;
-  margin-left: 5vh;
   margin-top: 5vh;
+}
+.featuresList div {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 3px 3px 10px blue;
+  height: 15vh;
+  text-align: center;
+  overflow: hidden;
+}
+.featuresList div > p {
+  padding-top: 10px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "w d"
+    "p t";
+  grid-template-columns: 0.2fr 0.8fr;
+  grid-template-rows: 0.25fr 0.75fr;
+  height: 100vh;
+}
+.grid-container,
+#welcome,
+#todos,
+#projects,
+#details {
+}
+
+#welcome {
+  grid-area: w;
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center;
+  margin: auto;
+  overflow: hidden;
+}
+
+#details {
+  grid-area: d;
+}
+
+#projects {
+  grid-area: p;
+}
+#projects h1 {
+  text-align: center;
+  padding-bottom: 5vh;
+}
+#createProject {
+  display: flex;
+  border: none;
+  border-radius: 25%;
+  padding: 5px 10px 5px 10px;
+  color: #82b7dc;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-left: auto;
+}
+#createProject:hover {
+  cursor: pointer;
+  color: blue;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: 0.8fr;
+  grid-template-rows: auto;
+  gap: 25px;
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.projects-grid div {
+  background-color: #82b7dc;
+  border: 2px solid black;
+}
+
+#todos {
+  grid-area: t;
+  text-align: center;
 }
