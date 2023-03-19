@@ -21,16 +21,16 @@ export function addGrid() {
             <div id="details"></div>
             <div id="projects">
               <div>
-                <button type="submit" id="createProject">Create New</button>
                 <h1>Projects</h1>
               </div>
               <div class="projects-grid">
-                  <div>Project 1</div>
+                <div>Project 1</div>
                 <div>Project 2</div>
                 <div>Project 3</div>
                 <div>Project 4</div>
                 <div>Project 5</div>
               </div>
+              <button type="submit" id="createProject">Create New</button>
             </div>
             <div id="todos">
               <div class="todosTitle">
@@ -40,7 +40,7 @@ export function addGrid() {
 
               <div id="tasks">
               </div>
-              
+
             </div>
         </div>
     `);
@@ -75,6 +75,11 @@ function createTaskButtonFunction() {
       "1"
     );
     tasks.appendChild(addNewTaskToDiv(task));
+    titleInput.value = "";
+    dueDateInput.value = "";
+    priorityInput.value = "";
+    descriptionInput.value = "";
+    notesInput.value = "";
   });
 }
 
@@ -123,7 +128,7 @@ export function welcomeTheUser(username) {
   const welcome = document.getElementById("welcome");
   const welcomeMessage = document.createElement("p");
   const d = new Date().toDateString();
-  welcomeMessage.innerHTML = `Welcome, ${username} <br> Today's date is <br> ${d}`;
+  welcomeMessage.innerHTML = `Welcome, ${username} <br> Date is <br> ${d}`;
   welcome.appendChild(welcomeMessage);
 }
 
