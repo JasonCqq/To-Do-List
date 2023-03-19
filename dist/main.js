@@ -1,3 +1,4 @@
+import { createTask } from "../src/get.js";
 import {
   addGrid,
   createNewTaskFunction,
@@ -5,7 +6,9 @@ import {
   welcomeTheUser,
 } from "../src/index.js";
 
-//MAIN DOM
+window.addEventListener("load", () => {
+  getStartedButtonFunction();
+});
 
 function getStartedButtonFunction() {
   const getStartedButton = document.getElementById("getStartedButton");
@@ -15,10 +18,9 @@ function getStartedButtonFunction() {
     if (usernameInput.value !== "") {
       let currentUserName = getUserName();
       mainScreen.remove(); //remove front page
-      addGrid(); //add second page
+      addGrid();
       createNewTaskFunction(); //adds functions for buttons
       welcomeTheUser(currentUserName);
     }
   });
 }
-getStartedButtonFunction();

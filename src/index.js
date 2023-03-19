@@ -1,3 +1,4 @@
+import { createTask } from "./get.js";
 //get username
 export function getUserName() {
   const usernameInput = document.getElementById("usernameInput");
@@ -24,7 +25,7 @@ export function addGrid() {
                 <h1>Projects</h1>
               </div>
               <div class="projects-grid">
-                <div>Project 1</div>
+                  <div>Project 1</div>
                 <div>Project 2</div>
                 <div>Project 3</div>
                 <div>Project 4</div>
@@ -32,8 +33,14 @@ export function addGrid() {
               </div>
             </div>
             <div id="todos">
-              <h1>To-dos</h1>
-              <button type="submit" id="createNewTask">Create a new task</button>
+              <div class="todosTitle">
+                <h1>To-dos</h1>
+                <button type="submit" id="createNewTask">Create a new task</button>
+              </div>
+
+              <div id="tasks">
+              </div>
+              
             </div>
         </div>
     `);
@@ -45,6 +52,29 @@ export function createNewTaskFunction() {
   const btn = document.getElementById("createNewTask");
   btn.addEventListener("click", () => {
     createToDoForm();
+    createTaskButtonFunction();
+  });
+}
+
+function createTaskButtonFunction() {
+  const btn5 = document.getElementById("submitForm");
+  const tasks = document.getElementById("tasks");
+  const titleInput = document.getElementById("titleInput");
+  const dueDateInput = document.getElementById("dueDateInput");
+  const priorityInput = document.getElementById("priorityInput");
+  const descriptionInput = document.getElementById("descriptionInput");
+  const notesInput = document.getElementById("notesInput");
+  btn5.addEventListener("click", (e) => {
+    e.preventDefault();
+    const task = createTask(
+      titleInput.value,
+      dueDateInput.value,
+      "RED",
+      descriptionInput.value,
+      notesInput.value,
+      "1"
+    );
+    tasks.appendChild(addNewTaskToDiv(task));
   });
 }
 
@@ -95,4 +125,16 @@ export function welcomeTheUser(username) {
   const d = new Date().toDateString();
   welcomeMessage.innerHTML = `Welcome, ${username} <br> Today's date is <br> ${d}`;
   welcome.appendChild(welcomeMessage);
+}
+
+export function addNewTaskToDiv(task) {
+  let newTask = elementFromHtml(`
+  <div>
+    <h3>${task.title}</h3>
+    <p>${task.dueDate}</p>
+    <p>${task.priority}</p>
+    <p>${task.description}</p>
+  </div>
+`);
+  return newTask;
 }
