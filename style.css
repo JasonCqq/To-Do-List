@@ -132,20 +132,25 @@
   grid-template-columns: 0.2fr 0.8fr;
   grid-template-rows: 0.25fr 0.75fr;
   height: 100vh;
+  gap: 2px;
 }
 .grid-container,
 #welcome,
 #todos,
 #projects,
 #details {
+  box-shadow: 1px 1px 5px #82b7dc;
+  border-radius: 15px;
 }
 
 #welcome {
   grid-area: w;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
   font-size: 2rem;
   text-align: center;
-  margin: auto;
   overflow: hidden;
 }
 
@@ -159,20 +164,23 @@
 #projects h1 {
   text-align: center;
   padding-bottom: 5vh;
+  text-decoration: underline;
 }
 #createProject {
   display: flex;
   border: none;
   border-radius: 25%;
   padding: 5px 10px 5px 10px;
-  color: #82b7dc;
+  color: blue;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.85rem;
+  margin-top: 10px;
+  margin-right: 10px;
   margin-left: auto;
 }
 #createProject:hover {
   cursor: pointer;
-  color: blue;
+  color: #82b7dc;
 }
 .projects-grid {
   display: grid;
@@ -184,11 +192,78 @@
   font-weight: bold;
 }
 .projects-grid div {
-  background-color: #82b7dc;
+  background-color: #d0d7de;
   border: 2px solid black;
+  padding: 15px;
 }
 
 #todos {
   grid-area: t;
   text-align: center;
+}
+
+#details form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 0.8fr);
+  font-weight: bold;
+  height: 80%;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#details #title-grid {
+  grid-row: 2 / 2;
+}
+#details #dueDate-grid {
+  grid-row: 3 / 3;
+}
+
+#details #priority-grid {
+  grid-row: 4 / 4;
+}
+
+#details #description-grid {
+  grid-column: 2 / 2;
+  grid-row: 1 / end;
+}
+
+#details #notes-grid {
+  grid-column: 3 / 3;
+  grid-row: 1 / end;
+}
+
+#details input,
+textarea {
+  border: 3px solid black;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+#descriptionInput,
+#notesInput {
+  height: 125px;
+  width: 250px;
+  resize: initial;
+}
+
+#redPriority {
+  background-color: red;
+  padding: 10px;
+  border-radius: 50%;
+  border-style: none;
+}
+#bluePriority {
+  background-color: blue;
+  padding: 10px;
+  border-radius: 50%;
+  border-style: none;
+}
+#whitePriority {
+  background-color: gray;
+  padding: 10px;
+  border-radius: 50%;
+  border-style: none;
 }
