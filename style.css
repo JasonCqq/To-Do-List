@@ -6,6 +6,7 @@
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
   color: black;
+  overflow: hidden;
 }
 
 #mainScreen {
@@ -127,10 +128,12 @@
 .grid-container {
   display: grid;
   grid-template-areas:
-    "w d"
-    "p t";
-  grid-template-columns: 0.2fr 0.8fr;
-  grid-template-rows: 0.25fr 0.75fr;
+    "w d d"
+    "p d d"
+    "p t t"
+    "p t t";
+  grid-template-columns: 0.15fr 0.8fr;
+  grid-template-rows: 0.55fr 0.6fr 1fr 1fr;
   height: 100vh;
   gap: 2px;
 }
@@ -149,7 +152,7 @@
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-align: center;
   overflow: hidden;
 }
@@ -199,7 +202,19 @@
 
 #todos {
   grid-area: t;
+  display: flex;
+  justify-content: center;
   text-align: center;
+  align-items: flex-start;
+}
+#todos h1 {
+  margin-left: auto;
+}
+
+#details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #details form {
@@ -207,37 +222,50 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(5, 0.8fr);
   font-weight: bold;
-  height: 80%;
-  gap: 5px;
+  height: 100%;
+  text-align: center;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  gap: 10px;
 }
 
-#details #title-grid {
+#title-grid {
+  grid-row: 1 / 1;
+}
+#dueDate-grid {
   grid-row: 2 / 2;
 }
-#details #dueDate-grid {
+
+#priority-grid {
   grid-row: 3 / 3;
 }
 
-#details #priority-grid {
+#description-grid {
+  grid-column: 2 / 2;
+  grid-row: 1 / 5;
+}
+
+#notes-grid {
+  grid-column: 3 / 3;
+  grid-row: 1 / 5;
+}
+
+#submitForm-grid {
   grid-row: 4 / 4;
 }
-
-#details #description-grid {
-  grid-column: 2 / 2;
-  grid-row: 1 / end;
-}
-
-#details #notes-grid {
-  grid-column: 3 / 3;
-  grid-row: 1 / end;
+#submitForm {
+  border: none;
+  background-color: blue;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-weight: bold;
+  margin-top: 15px;
 }
 
 #details input,
 textarea {
-  border: 3px solid black;
+  border: 2px solid black;
   font-weight: bold;
   font-size: 1rem;
 }
@@ -266,4 +294,18 @@ textarea {
   padding: 10px;
   border-radius: 50%;
   border-style: none;
+}
+
+#createNewTask {
+  background-color: blue;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 5%;
+  border-style: none;
+  margin-left: auto;
+}
+#createNewTask:hover {
+  cursor: pointer;
 }
