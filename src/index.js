@@ -1,4 +1,12 @@
-import { assignID, createTask, createProject } from "./get.js";
+import {
+  assignID,
+  createTask,
+  createProject,
+  currentDiv,
+  getCurrentID,
+  showProjects,
+  pushProject,
+} from "./get.js";
 //get username
 export function getUserName() {
   const usernameInput = document.getElementById("usernameInput");
@@ -24,7 +32,7 @@ export function addGrid() {
                 <h1>Projects</h1>
               </div>
               <div id="projects-grid">
-                <div id='project1'>Default Project</div>
+                <div id='project0' class="projectItem">Default Project</div>
               </div>
               <button type="submit" id="createProject">Create New</button>
             </div>
@@ -41,6 +49,7 @@ export function addGrid() {
         </div>
     `);
   document.body.appendChild(grid);
+  currentDiv("project1");
 }
 
 //create form when creating a new todo
@@ -70,8 +79,19 @@ function createTaskButtonFunction() {
       notesInput.value,
       assignID()
     );
-    console.log(task);
-    tasks.appendChild(addNewTaskToDiv(task));
+    // let tempArray = showProjects();
+    // let tempDiv = tempArray.find(getCurrentID);
+    let tempArray = showProjects();
+    let tempID = document.getElementById(`${getCurrentID()}`);
+    for (let key of tempArray) {
+      if (key.id == getCurrentID()) {
+        key.pushTask(task);
+        console.log(key.taskArray);
+      }
+    }
+    // tempID.appendChild(addNewTaskToDiv(task));
+    // tasks.appendChild(tempID);
+
     titleInput.value = "";
     dueDateInput.value = "";
     // priorityInput.value = "";
@@ -124,18 +144,23 @@ export function createToDoForm() {
 export function welcomeTheUser(username) {
   const welcome = document.getElementById("welcome");
   const welcomeMessage = document.createElement("p");
+  const amountOfTasksMessage = document.createElement("p");
   const d = new Date().toDateString();
   welcomeMessage.innerHTML = `Welcome, ${username} <br> ${d}`;
+  amountOfTasksMessage.innerHTML = `You have # of tasks due TODAY`;
   welcome.appendChild(welcomeMessage);
+  welcome.appendChild(amountOfTasksMessage);
+  const project1 = createProject("Default", "project1");
+  pushProject(project1);
+  defaultProjectFunction();
 }
 
 export function addNewTaskToDiv(task) {
   let newTask = elementFromHtml(`
   <div>
     <h3>${task.title}</h3>
-    <p>${task.dueDate}</p>
-    <p>${task.priority}</p>
-    <p>${task.description}</p>
+    <p>Due: ${task.dueDate}</p>
+    <p>Description: ${task.description}</p>
   </div>
 `);
   return newTask;
@@ -164,19 +189,50 @@ export function createProjectButtonFunction() {
       e.preventDefault();
       const newDiv = document.createElement("div");
       const p = document.createElement("p");
-      const project = createProject(input.value, assignID());
+      let project = createProject(input.value, assignID());
+      pushProject(project);
+
+      console.log(showProjects());
+
       newDiv.id = project.id;
-      newDiv.className = "projectItem";
+      newDiv.classList.add("projectItem");
       projectGrid.appendChild(newDiv);
       newDiv.appendChild(p);
+      newDiv.addEventListener("click", () => {
+        currentDiv(project.id);
+        lightUpDiv(project.id);
+        let task = document.getElementById("tasks");
+        removeAllChildElements(task);
+        console.log(project.taskArray);
+        for (let i = 0; i < project.taskArray.length; i++) {
+          for (let key of project.taskArray) {
+            let taskDiv = elementFromHtml(`
+            <div>
+              <h3>${key.title}<h3>
+              <p>Due: ${key.dueDate}<p>
+              <p>Description: ${key.description}<p>
+            </div>
+          `);
+            task.appendChild(taskDiv);
+          }
+        }
+        console.log(showProjects());
+      });
       newDiv.appendChild(removeProjectFunction());
       removeButtonFunction(newDiv.id);
       p.textContent = project.title;
       tempDiv.style.display = "none";
+      // lightUpDiv();
       button.removeEventListener("click", submitButtonClick);
       input.value = "";
     }
   });
+}
+
+function removeAllChildElements(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
 }
 
 export function removeProjectFunction() {
@@ -191,6 +247,15 @@ export function removeProjectFunction() {
   return btn;
 }
 
+function lightUpDiv(id) {
+  let tempid1 = Array.from(document.querySelectorAll("div.projectItem"));
+  for (let i = 0; i < tempid1.length; i++) {
+    tempid1[i].style.backgroundColor = "rgba(255, 255, 255, 0.05)";
+  }
+  let tempid2 = document.getElementById(`${id}`);
+  tempid2.style.backgroundColor = "white";
+}
+
 export function removeButtonFunction(currentDiv) {
   const btn = document.querySelectorAll(".deleteButton");
   btn.forEach((buttons) =>
@@ -199,4 +264,29 @@ export function removeButtonFunction(currentDiv) {
       divId.remove();
     })
   );
+}
+
+export function defaultProjectFunction() {
+  const defaultProject = document.getElementById("project0");
+  defaultProject.addEventListener("click", () => {
+    currentDiv("project1");
+    lightUpDiv("project0");
+    let task = document.getElementById("tasks");
+    removeAllChildElements(task);
+
+    let tempArray = showProjects();
+    for (let key of tempArray) {
+      if (key.id == "project1") {
+        for (let i = 0; i < key.taskArray.length; i++) {
+          let taskDiv = elementFromHtml(`
+                <div>
+                  ${key.taskArray[i]}
+                </div>
+              `);
+          task.appendChild(taskDiv);
+        }
+        console.log(showProjects());
+      }
+    }
+  });
 }
