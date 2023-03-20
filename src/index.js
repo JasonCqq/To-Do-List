@@ -24,7 +24,7 @@ export function addGrid() {
                 <h1>Projects</h1>
               </div>
               <div id="projects-grid">
-                <div id='project1'>Project 1</div>
+                <div id='project1'>Default Project</div>
               </div>
               <button type="submit" id="createProject">Create New</button>
             </div>
@@ -166,11 +166,37 @@ export function createProjectButtonFunction() {
       const p = document.createElement("p");
       const project = createProject(input.value, assignID());
       newDiv.id = project.id;
+      newDiv.className = "projectItem";
       projectGrid.appendChild(newDiv);
       newDiv.appendChild(p);
+      newDiv.appendChild(removeProjectFunction());
+      removeButtonFunction(newDiv.id);
       p.textContent = project.title;
       tempDiv.style.display = "none";
       button.removeEventListener("click", submitButtonClick);
+      input.value = "";
     }
   });
+}
+
+export function removeProjectFunction() {
+  // const projects = document.querySelectorAll("div.projectItem");
+  const btn = document.createElement("button");
+  btn.className = "deleteButton";
+  btn.textContent = "X";
+  btn.type = "submit";
+  btn.style.border = "none";
+  btn.style.background = "none";
+  btn.style.fontSize = "1rem";
+  return btn;
+}
+
+export function removeButtonFunction(currentDiv) {
+  const btn = document.querySelectorAll(".deleteButton");
+  btn.forEach((buttons) =>
+    buttons.addEventListener("click", () => {
+      const divId = document.getElementById(currentDiv);
+      divId.remove();
+    })
+  );
 }

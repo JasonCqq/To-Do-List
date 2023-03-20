@@ -165,7 +165,7 @@ html {
 }
 
 #welcome p {
-  color: #287bff;
+  color: black;
   text-decoration: underline;
 }
 
@@ -179,10 +179,8 @@ html {
 
 #projects {
   grid-area: p;
-  background: #287bff;
-  box-shadow: 5px 5px 10px #287bff;
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
+  background: #3444b5;
+  box-shadow: 2px 2px 5px #287bff;
 }
 #projects h1 {
   text-align: center;
@@ -190,13 +188,15 @@ html {
   padding-bottom: 5vh;
   color: white;
   letter-spacing: 3px;
+  text-shadow: 1px 1px 2px white;
+  text-transform: uppercase;
 }
 #createProject {
   display: flex;
   border: none;
   padding: 5px 10px 5px 10px;
   color: white;
-  background-color: blue;
+  background: none;
   font-weight: bold;
   font-size: 0.85rem;
   margin: auto;
@@ -208,16 +208,21 @@ html {
 #projects-grid {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto;
   gap: 25px;
   justify-content: center;
+  align-items: center;
 }
 #projects-grid div {
-  color: black;
-  background-color: rgba(255, 255, 255, 0.5);
+  height: 7vh;
+  color: #bdcaf1;
+  font-weight: bold;
   border: none;
   padding: 15px;
-  border-bottom-right-radius: 15px;
+  margin-left: 2vh;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+#projects-grid p {
+  color: #bdcaf1;
 }
 
 #projectTitleInput {
@@ -230,11 +235,12 @@ html {
 }
 
 #projectTitleSubmit {
-  border: 1px solid black;
-  border-radius: 50%;
+  border: 1px solid white;
+  color: white;
+  border-radius: 5px;
   width: 2.5vh;
   background: none;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
 }
 #projectTitleSubmit:hover {
   cursor: pointer;
@@ -250,7 +256,7 @@ html {
 #todos h1 {
   padding-top: 5px;
   margin-left: 5vh;
-  color: #287bff;
+  color: black;
 }
 .todosTitle {
   display: flex;
@@ -322,11 +328,11 @@ textarea {
 }
 
 #createNewTask {
-  background-color: #287bff;
+  box-shadow: 2px 2px 15px gray;
   border-style: none;
   padding: 10px;
   height: 5vh;
-  color: white;
+  color: black;
   font-weight: bold;
   font-size: 1rem;
   margin-left: auto;
