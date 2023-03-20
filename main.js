@@ -1,7 +1,7 @@
-import { createTask } from "../src/get.js";
 import {
   addGrid,
   createNewTaskFunction,
+  createProjectButtonFunction,
   getUserName,
   welcomeTheUser,
 } from "../src/index.js";
@@ -20,6 +20,7 @@ function getStartedButtonFunction() {
       mainScreen.remove(); //remove front page
       addGrid();
       createNewTaskFunction(); //adds functions for buttons
+      createProjectButtonFunction();
       welcomeTheUser(currentUserName);
     }
   });
