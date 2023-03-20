@@ -4,8 +4,8 @@ import {
   createProjectButtonFunction,
   getUserName,
   removeProjectFunction,
-  removeButtonFunction,
   welcomeTheUser,
+  // defaultProjectFunction,
 } from "../src/index.js";
 
 window.addEventListener("load", () => {
@@ -24,6 +24,7 @@ function getStartedButtonFunction() {
       createNewTaskFunction(); //adds functions for buttons
       createProjectButtonFunction();
       removeProjectFunction();
+      // defaultProjectFunction();
       welcomeTheUser(currentUserName);
     }
   });

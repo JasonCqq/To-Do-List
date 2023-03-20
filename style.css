@@ -154,19 +154,20 @@ html {
 #welcome {
   grid-area: w;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
   font-weight: bold;
-  font-size: 1.25rem;
   text-align: center;
   overflow: hidden;
   margin-top: 3vh;
-  border-radius: 25px;
+  gap: 50px;
 }
 
 #welcome p {
   color: black;
-  text-decoration: underline;
+  text-transform: uppercase;
+  font-size: 2rem;
+  letter-spacing: 2px;
 }
 
 #details {
@@ -186,8 +187,8 @@ html {
   text-align: center;
   padding-top: 5vh;
   padding-bottom: 5vh;
+  font-size: 1.5rem;
   color: white;
-  letter-spacing: 3px;
   text-shadow: 1px 1px 2px white;
   text-transform: uppercase;
 }
@@ -218,8 +219,12 @@ html {
   font-weight: bold;
   border: none;
   padding: 15px;
-  margin-left: 2vh;
+  margin-left: 1vh;
   background-color: rgba(255, 255, 255, 0.05);
+}
+
+#projects-grid div:hover {
+  cursor: pointer;
 }
 #projects-grid p {
   color: #bdcaf1;
@@ -343,13 +348,14 @@ textarea {
 
 #tasks {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, 30vh);
   grid-template-rows: repeat(3, 1fr);
   width: 90%;
   height: 70%;
   gap: 25px;
   margin: auto;
   margin-top: 5vh;
+  overflow: auto;
 }
 
 #tasks div {
@@ -357,7 +363,14 @@ textarea {
   border-radius: 10px;
   width: 28vh;
   height: 10vh;
+  font-size: 0.8rem;
   display: flex;
+  flex-direction: column;
+  text-align: center;
   align-self: center;
   justify-self: center;
+}
+
+#tasks p {
+  font-weight: 100;
 }
