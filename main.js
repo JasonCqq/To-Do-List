@@ -3,6 +3,8 @@ import {
   createNewTaskFunction,
   createProjectButtonFunction,
   getUserName,
+  removeProjectFunction,
+  removeButtonFunction,
   welcomeTheUser,
 } from "../src/index.js";
 
@@ -21,6 +23,7 @@ function getStartedButtonFunction() {
       addGrid();
       createNewTaskFunction(); //adds functions for buttons
       createProjectButtonFunction();
+      removeProjectFunction();
       welcomeTheUser(currentUserName);
     }
   });
