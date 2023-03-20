@@ -9,6 +9,10 @@
   overflow: hidden;
 }
 
+html {
+  /* background-color: #d5d5d5; */
+}
+
 #mainScreen {
   height: 100%;
   display: block;
@@ -25,11 +29,11 @@
   color: blue;
 }
 #navBar a {
-  color: blue;
+  color: black;
   font-weight: 700;
 }
 #navBar a:hover {
-  text-decoration: underline;
+  color: blue;
 }
 #navBar .navButtons {
   font-size: 1.25rem;
@@ -78,7 +82,7 @@
   border-radius: 25px;
   width: 40vh;
   height: 5vh;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
 }
@@ -94,6 +98,7 @@
   font-size: 1.5rem;
   border-radius: 15px;
 }
+
 .featuresMessage {
   display: flex;
   flex-direction: column;
@@ -104,24 +109,23 @@
   letter-spacing: 5px;
   margin-top: 1vh;
   text-align: center;
-  text-decoration: underline;
 }
 .featuresList {
   display: grid;
-  grid-template-columns: repeat(4, 0.9fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  width: 90%;
+  width: 70%;
   height: 40vh;
   margin: auto;
-  gap: 30px;
 }
 
 .featuresList div {
   display: flex;
   flex-direction: column;
   border: 1px solid blue;
-  box-shadow: 3px 3px 10px blue;
+  box-shadow: 3px 3px 15px blue;
   height: 15vh;
+  width: 25vh;
   margin-top: 3vh;
   text-align: center;
   justify-content: center;
@@ -137,13 +141,14 @@
 .grid-container {
   display: grid;
   grid-template-areas:
-    "w d d"
-    "p d d"
-    "p t t"
-    "p t t";
-  grid-template-columns: 0.15fr 0.8fr;
+    "p w d d"
+    "p w d d"
+    "p t t t"
+    "p t t t";
+  grid-template-columns: 0.25fr 0.5fr 0.4fr 0.4fr;
   grid-template-rows: 0.55fr 0.6fr 1fr 1fr;
   height: 100vh;
+  gap: 30px;
 }
 
 #welcome {
@@ -152,34 +157,38 @@
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   text-align: center;
   overflow: hidden;
-  background-color: #09c6f9;
+  margin-top: 3vh;
+  border-radius: 25px;
 }
 
 #welcome p {
-  color: rgb(34, 31, 31);
+  color: #287bff;
+  text-decoration: underline;
 }
 
 #details {
   grid-area: d;
+  border-radius: 25px;
+  margin-top: 3vh;
+  margin-right: 2vh;
+  box-shadow: 2px 2px 7px black;
 }
 
 #projects {
   grid-area: p;
-  background: linear-gradient(
-    to bottom,
-    #09c6f9 25%,
-    #08b1e0 50%,
-    #045de9 100%
-  );
+  background: #287bff;
+  box-shadow: 5px 5px 10px #287bff;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 #projects h1 {
   text-align: center;
   padding-top: 5vh;
   padding-bottom: 5vh;
-  color: black;
+  color: white;
   letter-spacing: 3px;
 }
 #createProject {
@@ -196,77 +205,78 @@
 #createProject:hover {
   cursor: pointer;
 }
-.projects-grid {
+#projects-grid {
   display: grid;
-  grid-template-columns: 0.9fr;
+  grid-template-columns: 1fr;
   grid-template-rows: auto;
   gap: 25px;
-  text-align: center;
   justify-content: center;
-  font-weight: bold;
 }
-.projects-grid div {
-  background-color: white;
+#projects-grid div {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.5);
   border: none;
   padding: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+#projectTitleInput {
+  border-style: none;
+  background: none;
+  font-size: 1rem;
+}
+#projectTitleInput:focus {
+  outline: none;
+}
+
+#projectTitleSubmit {
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 2.5vh;
+  background: none;
+  font-size: 1.25rem;
+}
+#projectTitleSubmit:hover {
+  cursor: pointer;
 }
 
 #todos {
   grid-area: t;
+  box-shadow: 5px 5px 25px black;
+  border-radius: 25px;
+  margin-right: 2vh;
+  margin-bottom: 2vh;
 }
 #todos h1 {
-  text-decoration: underline;
   padding-top: 5px;
   margin-left: 5vh;
+  color: #287bff;
 }
 .todosTitle {
   display: flex;
   justify-content: center;
 }
 
-#details {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 1px solid blue;
-}
-
 #details form {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(5, 0.8fr);
+  display: flex;
+  flex-direction: column;
   font-weight: bold;
   height: 100%;
-  text-align: center;
   justify-content: center;
-  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
   gap: 10px;
+  margin-left: 5vh;
 }
 
-#title-grid {
-  grid-row: 1 / 1;
-}
-#dueDate-grid {
-  grid-row: 2 / 2;
+#details form #dueDateInput {
+  width: 29vh;
 }
 
-#priority-grid {
-  grid-row: 3 / 3;
+#details form label {
+  color: #287bf7;
 }
 
-#description-grid {
-  grid-column: 2 / 2;
-  grid-row: 1 / 5;
-}
-
-#notes-grid {
-  grid-column: 3 / 3;
-  grid-row: 1 / 5;
-}
-
-#submitForm-grid {
-  grid-row: 4 / 4;
-}
 #submitForm {
   border: none;
   background-color: blue;
@@ -279,7 +289,8 @@
 
 #details input,
 textarea {
-  border: 2px solid black;
+  border: 1px solid black;
+  border-radius: 5px;
   font-weight: bold;
   font-size: 1rem;
 }
@@ -311,13 +322,13 @@ textarea {
 }
 
 #createNewTask {
-  background-color: blue;
+  background-color: #287bff;
+  border-style: none;
   padding: 10px;
   height: 5vh;
   color: white;
   font-weight: bold;
   font-size: 1rem;
-  border-radius: 5%;
   margin-left: auto;
 }
 #createNewTask:hover {
@@ -326,7 +337,7 @@ textarea {
 
 #tasks {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
   width: 90%;
   height: 70%;
@@ -336,8 +347,11 @@ textarea {
 }
 
 #tasks div {
-  border: 1px solid black;
-  box-shadow: 2px 2px 5px black;
-  background: linear-gradient(to right, #09c6f9 50%, #045de9 100%);
-  text-align: center;
+  box-shadow: 5px 5px 12px black;
+  border-radius: 10px;
+  width: 28vh;
+  height: 10vh;
+  display: flex;
+  align-self: center;
+  justify-self: center;
 }

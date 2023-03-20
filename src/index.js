@@ -1,4 +1,4 @@
-import { createTask } from "./get.js";
+import { assignID, createTask, createProject } from "./get.js";
 //get username
 export function getUserName() {
   const usernameInput = document.getElementById("usernameInput");
@@ -23,12 +23,8 @@ export function addGrid() {
               <div>
                 <h1>Projects</h1>
               </div>
-              <div class="projects-grid">
-                <div>Project 1</div>
-                <div>Project 2</div>
-                <div>Project 3</div>
-                <div>Project 4</div>
-                <div>Project 5</div>
+              <div id="projects-grid">
+                <div id='project1'>Project 1</div>
               </div>
               <button type="submit" id="createProject">Create New</button>
             </div>
@@ -72,12 +68,13 @@ function createTaskButtonFunction() {
       "RED",
       descriptionInput.value,
       notesInput.value,
-      "1"
+      assignID()
     );
+    console.log(task);
     tasks.appendChild(addNewTaskToDiv(task));
     titleInput.value = "";
     dueDateInput.value = "";
-    priorityInput.value = "";
+    // priorityInput.value = "";
     descriptionInput.value = "";
     notesInput.value = "";
   });
@@ -89,7 +86,7 @@ export function createToDoForm() {
   const form = elementFromHtml(`
   <form>
     <div id="title-grid">
-      <label for="titleInput">Title</label>
+      <label for="titleInput">Title</label> <br>
       <input id="titleInput" name="titleInput" type="text">
     </div>
 
@@ -99,11 +96,11 @@ export function createToDoForm() {
     </div>
 
     <div id="dueDate-grid">
-      <label for="dueDateInput">Due Date</label>
+      <label for="dueDateInput">Due Date</label> <br>
       <input id="dueDateInput" name="dueDateInput" type="date">
     </div>
 
-    <div id="priority-grid">
+    <div id="priority-grid"> 
       <h3>Priority</h3>
       <button id="redPriority"></button>
       <button id="bluePriority"></button>
@@ -128,7 +125,7 @@ export function welcomeTheUser(username) {
   const welcome = document.getElementById("welcome");
   const welcomeMessage = document.createElement("p");
   const d = new Date().toDateString();
-  welcomeMessage.innerHTML = `Welcome, ${username} <br> Date is <br> ${d}`;
+  welcomeMessage.innerHTML = `Welcome, ${username} <br> ${d}`;
   welcome.appendChild(welcomeMessage);
 }
 
@@ -142,4 +139,38 @@ export function addNewTaskToDiv(task) {
   </div>
 `);
   return newTask;
+}
+
+export function createProjectButtonFunction() {
+  const createNewProject = document.getElementById("createProject");
+  const projectGrid = document.getElementById("projects-grid");
+  const tempDiv = document.createElement("div");
+  const input = document.createElement("input");
+  const button = document.createElement("button");
+  button.textContent = "+";
+  button.id = "projectTitleSubmit";
+  button.type = "submit";
+  input.id = "projectTitleInput";
+  createNewProject.addEventListener("click", (e) => {
+    e.preventDefault();
+    projectGrid.appendChild(tempDiv);
+    tempDiv.appendChild(input);
+    tempDiv.appendChild(button);
+    tempDiv.id = assignID();
+    tempDiv.style.display = "block";
+
+    button.addEventListener("click", submitButtonClick);
+    function submitButtonClick(e) {
+      e.preventDefault();
+      const newDiv = document.createElement("div");
+      const p = document.createElement("p");
+      const project = createProject(input.value, assignID());
+      newDiv.id = project.id;
+      projectGrid.appendChild(newDiv);
+      newDiv.appendChild(p);
+      p.textContent = project.title;
+      tempDiv.style.display = "none";
+      button.removeEventListener("click", submitButtonClick);
+    }
+  });
 }
