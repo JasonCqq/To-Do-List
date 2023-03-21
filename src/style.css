@@ -9,10 +9,6 @@
   overflow: hidden;
 }
 
-html {
-  /* background-color: #d5d5d5; */
-}
-
 #mainScreen {
   height: 100%;
   display: block;
