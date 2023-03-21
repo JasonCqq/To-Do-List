@@ -1,10 +1,20 @@
-import { addGrid, createNewTaskFunction, createProjectButtonFunction, getUserName, removeProjectFunction, welcomeTheUser } from "./index.js";
-import { projectArr, taskArr } from "./get.js";
+import {
+  addGrid,
+  createNewTaskFunction,
+  createProjectButtonFunction,
+  getUserName,
+  removeProjectFunction,
+  welcomeTheUser,
+} from "./src/index.js";
+import { projectArr, taskArr } from "./src/get.js";
 window.addEventListener("load", function () {
   getStartedButtonFunction();
   for (var i = 0; i < projectArr.length; i++) {
     var project = projectArr[i];
-    localStorage.setItem("project_".concat(project.id), JSON.stringify(project));
+    localStorage.setItem(
+      "project_".concat(project.id),
+      JSON.stringify(project)
+    );
   }
   for (var _i = 0; _i < taskArr.length; _i++) {
     var task = taskArr[_i];
