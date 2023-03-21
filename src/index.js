@@ -9,7 +9,7 @@ import {
   removeTask,
   pushProject,
   pushTask,
-} from "./get.js";
+} from "get.js";
 //get username
 export function getUserName() {
   const usernameInput = document.getElementById("usernameInput");
