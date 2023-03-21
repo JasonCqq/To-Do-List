@@ -92,14 +92,15 @@ function createTaskButtonFunction() {
         console.log(key.taskArray);
         let taskDiv = elementFromHtml(`
             <div class="task-item ${task.taskID}">
-              <h3>Task-${key.title}</h3>
-              <p>Due: ${key.dueDate}</p>
-              <p>${key.priority}</p>
-              <p>Description: ${key.description}</p>
+              <h3>Task-${task.title}</h3>
+              <p>Due: ${task.dueDate}</p>
+              <p>${task.priority}</p>
+              <p>Description: ${task.description}</p>
             </div>
           `);
         tasks.appendChild(taskDiv);
         showTaskDetail();
+        deleteTaskButton();
       }
     }
 
@@ -334,4 +335,22 @@ function showTaskDetail() {
       }
     });
   }
+}
+
+function deleteTaskButton() {
+  const task = Array.from(document.querySelectorAll("div.task-item"));
+  const btn = document.createElement("button");
+  btn.textContent = "delete";
+  btn.classList.add("deleteTaskButton");
+
+  task.forEach((element) => element.appendChild(btn));
+
+  btn.addEventListener("click", () => {
+    let tempID = btn.parentElement.getAttribute("class").split(" ")[1];
+    for (const a of task) {
+      if (a.getAttribute("class").split(" ")[1] == tempID) {
+        a.remove();
+      }
+    }
+  });
 }
