@@ -10,6 +10,11 @@ import {
   pushProject,
   pushTask,
 } from "./get.js";
+
+import "./style.css";
+import "./main.js";
+import "./get.js";
+
 //get username
 export function getUserName() {
   const usernameInput = document.getElementById("usernameInput");
