@@ -1,2 +1,2 @@
-# odin-restaurant\
-Will finish later.
+# odin-todolist\
+The Odin Project - To Do List.
