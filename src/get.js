@@ -32,6 +32,16 @@ export function showProjects() {
   // }
 }
 
+const taskArr = [];
+
+export function pushTask(task) {
+  taskArr.push(task);
+}
+
+export function showTasks() {
+  return taskArr;
+}
+
 export function createTask(
   title,
   dueDate,

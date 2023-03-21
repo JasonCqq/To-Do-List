@@ -181,7 +181,6 @@ html {
 #projects {
   grid-area: p;
   background: #3444b5;
-  box-shadow: 2px 2px 5px #287bff;
 }
 #projects h1 {
   text-align: center;
@@ -215,7 +214,7 @@ html {
 }
 #projects-grid div {
   height: 7vh;
-  color: #bdcaf1;
+  color: black;
   font-weight: bold;
   border: none;
   padding: 15px;
@@ -227,7 +226,7 @@ html {
   cursor: pointer;
 }
 #projects-grid p {
-  color: #bdcaf1;
+  color: black;
 }
 
 #projectTitleInput {
@@ -285,7 +284,7 @@ html {
 }
 
 #details form label {
-  color: #287bf7;
+  color: black;
 }
 
 #submitForm {
@@ -325,7 +324,7 @@ textarea {
   border-radius: 50%;
   border-style: none;
 }
-#whitePriority {
+#grayPriority {
   background-color: gray;
   padding: 10px;
   border-radius: 50%;
@@ -373,4 +372,16 @@ textarea {
 
 #tasks p {
   font-weight: 100;
+}
+
+#deleteTask {
+  border: none;
+}
+
+.task-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
 }

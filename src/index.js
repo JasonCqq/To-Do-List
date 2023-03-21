@@ -5,7 +5,9 @@ import {
   currentDiv,
   getCurrentID,
   showProjects,
+  showTasks,
   pushProject,
+  pushTask,
 } from "./get.js";
 //get username
 export function getUserName() {
@@ -74,11 +76,12 @@ function createTaskButtonFunction() {
     const task = createTask(
       titleInput.value,
       dueDateInput.value,
-      "RED",
+      priorityInput.value,
       descriptionInput.value,
       notesInput.value,
       assignID()
     );
+    pushTask(task);
     // let tempArray = showProjects();
     // let tempDiv = tempArray.find(getCurrentID);
     let tempArray = showProjects();
@@ -87,14 +90,24 @@ function createTaskButtonFunction() {
       if (key.id == getCurrentID()) {
         key.pushTask(task);
         console.log(key.taskArray);
+        let taskDiv = elementFromHtml(`
+            <div class="task-item ${task.taskID}">
+              <h3>Task-${key.title}</h3>
+              <p>Due: ${key.dueDate}</p>
+              <p>${key.priority}</p>
+              <p>Description: ${key.description}</p>
+            </div>
+          `);
+        tasks.appendChild(taskDiv);
+        showTaskDetail();
       }
     }
+
     // tempID.appendChild(addNewTaskToDiv(task));
     // tasks.appendChild(tempID);
-
     titleInput.value = "";
     dueDateInput.value = "";
-    // priorityInput.value = "";
+    priorityInput.value = "";
     descriptionInput.value = "";
     notesInput.value = "";
   });
@@ -122,9 +135,7 @@ export function createToDoForm() {
 
     <div id="priority-grid"> 
       <h3>Priority</h3>
-      <button id="redPriority"></button>
-      <button id="bluePriority"></button>
-      <button id="whitePriority"></button>
+      <input id="priorityInput" type="text" placeholder="urgency...">
     </div>
 
     <div id="notes-grid">
@@ -137,6 +148,7 @@ export function createToDoForm() {
     </div>
   </form>
   `);
+  removeAllChildElements(details);
   details.appendChild(form);
 }
 
@@ -157,7 +169,7 @@ export function welcomeTheUser(username) {
 
 export function addNewTaskToDiv(task) {
   let newTask = elementFromHtml(`
-  <div>
+  <div class="task-item ${task.taskID}">
     <h3>${task.title}</h3>
     <p>Due: ${task.dueDate}</p>
     <p>Description: ${task.description}</p>
@@ -207,10 +219,11 @@ export function createProjectButtonFunction() {
         for (let i = 0; i < project.taskArray.length; i++) {
           for (let key of project.taskArray) {
             let taskDiv = elementFromHtml(`
-            <div>
-              <h3>${key.title}<h3>
-              <p>Due: ${key.dueDate}<p>
-              <p>Description: ${key.description}<p>
+            <div class="task-item ${key.taskID}">
+              <h3>Task-${key.title}</h3>
+              <p>Due: ${key.dueDate}</p>
+              <p>${key.priority}</p>
+              <p>Description: ${key.description}</p>
             </div>
           `);
             task.appendChild(taskDiv);
@@ -279,7 +292,7 @@ export function defaultProjectFunction() {
       if (key.id == "project1") {
         for (let i = 0; i < key.taskArray.length; i++) {
           let taskDiv = elementFromHtml(`
-                <div>
+                <div class="task-item ${key.taskArray[i.taskID]}">
                   ${key.taskArray[i]}
                 </div>
               `);
@@ -289,4 +302,36 @@ export function defaultProjectFunction() {
       }
     }
   });
+}
+
+function showTaskDetail() {
+  const task = Array.from(document.querySelectorAll("div.task-item"));
+  const detailContainer = document.getElementById("details");
+
+  for (const a of task) {
+    //Each Div
+    a.addEventListener("click", () => {
+      //Add click
+      const tempArray = showTasks(); //Get Task Array
+      removeAllChildElements(detailContainer); //Remove anything in details
+      console.log(a.getAttribute("class").split(" ")[1]);
+      for (const b of tempArray) {
+        console.log(b.taskID);
+        //Looping through the Task Array
+        if (b.taskID == a.getAttribute("class").split(" ")[1]) {
+          //If ID is correct
+          let taskDiv = elementFromHtml(`
+          <div class='task-detail'> 
+            <h3>Title: ${b.title}</h3>
+            <p>Due: ${b.dueDate}</p>
+            <p>Priority: ${b.priority}</p>
+            <p>Description: ${b.description}</p>
+            <p>Notes: ${b.notes}</p>
+          </div>
+          `);
+          detailContainer.appendChild(taskDiv);
+        }
+      }
+    });
+  }
 }
