@@ -385,3 +385,10 @@ textarea {
   gap: 15px;
   flex-wrap: wrap;
 }
+
+.deleteTaskButton {
+  width: 5vh;
+  border: none;
+  background-color: red;
+  padding-bottom: 7px;
+}
