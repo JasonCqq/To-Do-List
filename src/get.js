@@ -4,8 +4,6 @@ const projectArr = [];
 
 export function createProject(title, id) {
   const taskArray = [];
-  // let i = this;
-  // projectArr.push({ title, id });
   return {
     title,
     id,
@@ -27,9 +25,6 @@ export function pushProject(object) {
 
 export function showProjects() {
   return projectArr;
-  // for (let key of projectArr) {
-  //   console.log(key.title);
-  // }
 }
 
 const taskArr = [];
@@ -42,6 +37,13 @@ export function showTasks() {
   return taskArr;
 }
 
+export function removeTask(task) {
+  const index = taskArr.indexOf(task);
+  if (index > -1) {
+    taskArr.splice(index, 1);
+  }
+}
+
 export function createTask(
   title,
   dueDate,
@@ -51,12 +53,6 @@ export function createTask(
   taskID,
   projectID
 ) {
-  // {
-  //   for (const i of projectArr) {
-  //     if (i.id === getCurrentID()) {
-  //       i.pushTask(taskID);
-  //     }
-  //   }
   projectID = getCurrentID();
   return {
     title,

@@ -114,16 +114,17 @@ html {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  width: 70%;
+  width: 80%;
   height: 40vh;
   margin: auto;
+  overflow: auto;
 }
 
 .featuresList div {
   display: flex;
   flex-direction: column;
   border: 1px solid blue;
-  box-shadow: 3px 3px 15px blue;
+  box-shadow: 2px 2px 5px blue;
   height: 15vh;
   width: 25vh;
   margin-top: 3vh;
@@ -222,17 +223,20 @@ html {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
+#projects-grid p {
+  color: white;
+}
+
 #projects-grid div:hover {
   cursor: pointer;
-}
-#projects-grid p {
-  color: black;
 }
 
 #projectTitleInput {
   border-style: none;
   background: none;
   font-size: 1rem;
+  color: white;
+  font-weight: bold;
 }
 #projectTitleInput:focus {
   outline: none;
@@ -240,11 +244,16 @@ html {
 
 #projectTitleSubmit {
   border: 1px solid white;
-  color: white;
+  background-color: white;
+  color: black;
   border-radius: 5px;
-  width: 2.5vh;
-  background: none;
+  width: 2vh;
+  height: 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1.15rem;
+  font-weight: bold;
 }
 #projectTitleSubmit:hover {
   cursor: pointer;
@@ -296,13 +305,16 @@ html {
   font-weight: bold;
   margin-top: 15px;
 }
+#submitForm:hover {
+  cursor: pointer;
+}
 
 #details input,
 textarea {
-  border: 1px solid black;
-  border-radius: 5px;
+  border: 2px solid black;
   font-weight: bold;
   font-size: 1rem;
+  padding-left: 5px;
 }
 
 #descriptionInput,
@@ -332,7 +344,6 @@ textarea {
 }
 
 #createNewTask {
-  box-shadow: 2px 2px 15px gray;
   border-style: none;
   padding: 10px;
   height: 5vh;
@@ -358,8 +369,7 @@ textarea {
 }
 
 #tasks div {
-  box-shadow: 5px 5px 12px black;
-  border-radius: 10px;
+  box-shadow: 1px 1px 12px black;
   width: 28vh;
   height: 10vh;
   font-size: 0.8rem;
@@ -390,5 +400,23 @@ textarea {
   width: 5vh;
   border: none;
   background-color: red;
+  color: white;
+  font-weight: bold;
   padding-bottom: 7px;
+  margin-top: auto;
+}
+
+.deleteButton {
+  border: none;
+  font-weight: bold;
+  background-color: red;
+  border-radius: 25px;
+  width: 1.25vh;
+  height: 1.25vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.deleteButton:hover {
+  cursor: pointer;
 }

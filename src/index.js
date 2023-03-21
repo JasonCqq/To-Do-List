@@ -6,6 +6,7 @@ import {
   getCurrentID,
   showProjects,
   showTasks,
+  removeTask,
   pushProject,
   pushTask,
 } from "./get.js";
@@ -34,7 +35,7 @@ export function addGrid() {
                 <h1>Projects</h1>
               </div>
               <div id="projects-grid">
-                <div id='project0' class="projectItem">Default Project</div>
+                <div id='project0' class="projectItem"><p>Default Project</p></div>
               </div>
               <button type="submit" id="createProject">Create New</button>
             </div>
@@ -82,30 +83,24 @@ function createTaskButtonFunction() {
       assignID()
     );
     pushTask(task);
-    // let tempArray = showProjects();
-    // let tempDiv = tempArray.find(getCurrentID);
     let tempArray = showProjects();
-    let tempID = document.getElementById(`${getCurrentID()}`);
+
     for (let key of tempArray) {
       if (key.id == getCurrentID()) {
         key.pushTask(task);
-        console.log(key.taskArray);
         let taskDiv = elementFromHtml(`
             <div class="task-item ${task.taskID}">
               <h3>Task-${task.title}</h3>
               <p>Due: ${task.dueDate}</p>
-              <p>${task.priority}</p>
+              <p>Priority: ${task.priority}</p>
               <p>Description: ${task.description}</p>
             </div>
           `);
         tasks.appendChild(taskDiv);
-        showTaskDetail();
-        deleteTaskButton();
       }
     }
+    showTaskDetail();
 
-    // tempID.appendChild(addNewTaskToDiv(task));
-    // tasks.appendChild(tempID);
     titleInput.value = "";
     dueDateInput.value = "";
     priorityInput.value = "";
@@ -168,17 +163,6 @@ export function welcomeTheUser(username) {
   defaultProjectFunction();
 }
 
-export function addNewTaskToDiv(task) {
-  let newTask = elementFromHtml(`
-  <div class="task-item ${task.taskID}">
-    <h3>${task.title}</h3>
-    <p>Due: ${task.dueDate}</p>
-    <p>Description: ${task.description}</p>
-  </div>
-`);
-  return newTask;
-}
-
 export function createProjectButtonFunction() {
   const createNewProject = document.getElementById("createProject");
   const projectGrid = document.getElementById("projects-grid");
@@ -202,10 +186,9 @@ export function createProjectButtonFunction() {
       e.preventDefault();
       const newDiv = document.createElement("div");
       const p = document.createElement("p");
+      p.classList.add("project-title");
       let project = createProject(input.value, assignID());
       pushProject(project);
-
-      console.log(showProjects());
 
       newDiv.id = project.id;
       newDiv.classList.add("projectItem");
@@ -216,27 +199,23 @@ export function createProjectButtonFunction() {
         lightUpDiv(project.id);
         let task = document.getElementById("tasks");
         removeAllChildElements(task);
-        console.log(project.taskArray);
-        for (let i = 0; i < project.taskArray.length; i++) {
-          for (let key of project.taskArray) {
-            let taskDiv = elementFromHtml(`
+        for (let key of project.taskArray) {
+          let taskDiv = elementFromHtml(`
             <div class="task-item ${key.taskID}">
               <h3>Task-${key.title}</h3>
               <p>Due: ${key.dueDate}</p>
-              <p>${key.priority}</p>
+              <p>Priority: ${key.priority}</p>
               <p>Description: ${key.description}</p>
             </div>
           `);
-            task.appendChild(taskDiv);
-          }
+          task.appendChild(taskDiv);
         }
-        console.log(showProjects());
+        deleteTaskButton();
       });
       newDiv.appendChild(removeProjectFunction());
       removeButtonFunction(newDiv.id);
       p.textContent = project.title;
       tempDiv.style.display = "none";
-      // lightUpDiv();
       button.removeEventListener("click", submitButtonClick);
       input.value = "";
     }
@@ -250,24 +229,26 @@ function removeAllChildElements(parent) {
 }
 
 export function removeProjectFunction() {
-  // const projects = document.querySelectorAll("div.projectItem");
   const btn = document.createElement("button");
   btn.className = "deleteButton";
-  btn.textContent = "X";
+  btn.textContent = "-";
   btn.type = "submit";
-  btn.style.border = "none";
-  btn.style.background = "none";
-  btn.style.fontSize = "1rem";
   return btn;
 }
 
 function lightUpDiv(id) {
   let tempid1 = Array.from(document.querySelectorAll("div.projectItem"));
+  let tempid2 = document.getElementById(`${id}`);
+  let pElement = tempid2.querySelector("p");
+
   for (let i = 0; i < tempid1.length; i++) {
     tempid1[i].style.backgroundColor = "rgba(255, 255, 255, 0.05)";
+    let pElement2 = tempid1[i].querySelector("p");
+    pElement2.style.color = "white";
   }
-  let tempid2 = document.getElementById(`${id}`);
+
   tempid2.style.backgroundColor = "white";
+  pElement.style.color = "blue";
 }
 
 export function removeButtonFunction(currentDiv) {
@@ -291,17 +272,22 @@ export function defaultProjectFunction() {
     let tempArray = showProjects();
     for (let key of tempArray) {
       if (key.id == "project1") {
-        for (let i = 0; i < key.taskArray.length; i++) {
+        for (const i of key.taskArray) {
           let taskDiv = elementFromHtml(`
-                <div class="task-item ${key.taskArray[i.taskID]}">
-                  ${key.taskArray[i]}
+                <div class="task-item ${i.taskID}">
+                <h3>Task-${i.title}</h3>
+                <p>Due: ${i.dueDate}</p>
+                <p>Priority: ${i.priority}</p>
+                <p>Description: ${i.description}</p>
+              </div>
                 </div>
               `);
           task.appendChild(taskDiv);
         }
-        console.log(showProjects());
       }
     }
+    deleteTaskButton();
+    showTaskDetail();
   });
 }
 
@@ -315,9 +301,7 @@ function showTaskDetail() {
       //Add click
       const tempArray = showTasks(); //Get Task Array
       removeAllChildElements(detailContainer); //Remove anything in details
-      console.log(a.getAttribute("class").split(" ")[1]);
       for (const b of tempArray) {
-        console.log(b.taskID);
         //Looping through the Task Array
         if (b.taskID == a.getAttribute("class").split(" ")[1]) {
           //If ID is correct
@@ -335,10 +319,12 @@ function showTaskDetail() {
       }
     });
   }
+  deleteTaskButton();
 }
 
 function deleteTaskButton() {
   const task = Array.from(document.querySelectorAll("div.task-item"));
+  const tempArray = showTasks();
   const btn = document.createElement("button");
   btn.textContent = "delete";
   btn.classList.add("deleteTaskButton");
@@ -350,6 +336,11 @@ function deleteTaskButton() {
     for (const a of task) {
       if (a.getAttribute("class").split(" ")[1] == tempID) {
         a.remove();
+        for (const b of tempArray) {
+          if (b.taskID == tempID) {
+            removeTask(b);
+          }
+        }
       }
     }
   });
