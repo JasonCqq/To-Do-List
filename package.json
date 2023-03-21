@@ -1,28 +1,31 @@
 {
-  "name": "odin-restaurant",
+  "name": "odin-todolist",
   "version": "1.0.0",
   "description": "",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack --mode=development",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jason21715/odin-restaurant.git"
+    "url": "git+https://github.com/jason21715/odin-todolist.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jason21715/odin-restaurant/issues"
+    "url": "https://github.com/jason21715/odin-todolist/issues"
   },
-  "homepage": "https://github.com/jason21715/odin-restaurant#readme",
+  "homepage": "https://github.com/jason21715/odin-todolist#readme",
   "devDependencies": {
     "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
     "eslint": "^8.36.0",
+    "gh-pages": "^5.0.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.5",
