@@ -1,6 +1,6 @@
 //factories?
 
-const projectArr = [];
+export const projectArr = [];
 
 export function createProject(title, id) {
   const taskArray = [];
@@ -27,7 +27,7 @@ export function showProjects() {
   return projectArr;
 }
 
-const taskArr = [];
+export const taskArr = [];
 
 export function pushTask(task) {
   taskArr.push(task);
