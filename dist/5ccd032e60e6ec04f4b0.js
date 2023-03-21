@@ -6,10 +6,8 @@ import {
   removeProjectFunction,
   welcomeTheUser,
 } from "./index.js";
-
 import { projectArr, taskArr } from "./get.js";
-
-window.addEventListener("load", () => {
+window.addEventListener("load", function () {
   getStartedButtonFunction();
 
   // for (let i = 0; i < projectArr.length; i++) {
@@ -35,12 +33,12 @@ window.addEventListener("load", () => {
 });
 
 function getStartedButtonFunction() {
-  const getStartedButton = document.getElementById("getStartedButton");
-  const usernameInput = document.getElementById("usernameInput");
-  const mainScreen = document.getElementById("mainScreen");
-  getStartedButton.addEventListener("click", () => {
+  var getStartedButton = document.getElementById("getStartedButton");
+  var usernameInput = document.getElementById("usernameInput");
+  var mainScreen = document.getElementById("mainScreen");
+  getStartedButton.addEventListener("click", function () {
     if (usernameInput.value !== "") {
-      let currentUserName = getUserName();
+      var currentUserName = getUserName();
       mainScreen.remove(); //remove front page
       addGrid();
       createNewTaskFunction(); //adds functions for buttons
