@@ -12,7 +12,7 @@ export function createProject(title, id) {
     },
     pushTask: function pushTask(task) {
       taskArray.push(task);
-    }
+    },
   };
 }
 export function pushProject(object) {
@@ -34,7 +34,15 @@ export function removeTask(task) {
     taskArr.splice(index, 1);
   }
 }
-export function createTask(title, dueDate, priority, description, notes, taskID, projectID) {
+export function createTask(
+  title,
+  dueDate,
+  priority,
+  description,
+  notes,
+  taskID,
+  projectID
+) {
   projectID = getCurrentID();
   return {
     title: title,
@@ -43,7 +51,7 @@ export function createTask(title, dueDate, priority, description, notes, taskID,
     description: description,
     notes: notes,
     taskID: taskID,
-    projectID: projectID
+    projectID: projectID,
   };
 }
 export function assignID() {
