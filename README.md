@@ -1,3 +1,2 @@
-# odin-todolist\
-
-The Odin Project - To Do List.
+todolist\
+To Do List.
